@@ -1,13 +1,13 @@
 # Chuleta – Listas en Python
 
-## Qué es una lista
+## Que es una lista
 - Estructura ordenada
 - Permite duplicados
-- Es mutable (se puede modificar)
+- Es mutable (se puede cambiar)
 
 ```python
-numbers = [1, 2, 3]     # lista de números
-empty = []              # lista vacía
+numbers = [1, 2, 3]   # lista normal de numeros
+empty = []            # lista vacia
 ```
 
 ---
@@ -16,15 +16,15 @@ empty = []              # lista vacía
 ```python
 languages = ['Python', 'Ruby', 'JavaScript']   # lista de strings
 
-data = ['Tenerife', 3718, {'temp': 24}]        # lista con tipos mezclados
+data = ['Tenerife', 3718, {'temp': 24}]        # mezcla de datos
 ```
 
 ---
 
 ## Convertir a lista
 ```python
-list('Python')      # ['P', 'y', 't', 'h', 'o', 'n']
-list(range(5))      # [0, 1, 2, 3, 4]
+list('Python')     # ['P','y','t','h','o','n']
+list(range(5))     # [0,1,2,3,4]
 ```
 
 ---
@@ -33,89 +33,78 @@ list(range(5))      # [0, 1, 2, 3, 4]
 ```python
 shopping = ['Agua', 'Huevos', 'Aceite']
 
-shopping[0]     # 'Agua' (primer elemento)
-shopping[1]     # 'Huevos'
-shopping[-1]    # 'Aceite' (último elemento)
+shopping[0]     # primer elemento
+shopping[1]     # segundo
+shopping[-1]    # ultimo
 ```
 
 ---
 
 ## Trocear listas (slicing)
 ```python
-shopping = ['Agua', 'Huevos', 'Aceite', 'Sal', 'Limón']
+shopping = ['Agua', 'Huevos', 'Aceite', 'Sal', 'Limon']
 
-shopping[:3]        # ['Agua', 'Huevos', 'Aceite']
-shopping[2:4]       # ['Aceite', 'Sal']
-shopping[::-1]      # ['Limón', 'Sal', 'Aceite', 'Huevos', 'Agua']
+shopping[:3]        # primeros 3
+shopping[2:4]       # del indice 2 al 3
+shopping[::-1]      # lista al reves
 ```
 
 ---
 
 ## Invertir una lista
 ```python
-shopping[::-1]              # devuelve una lista invertida
-list(reversed(shopping))    # lo mismo, usando reversed()
+shopping[::-1]           # devuelve la lista invertida
+list(reversed(shopping)) # lo mismo pero con reversed
 ```
 
 ---
 
-## Añadir elementos
+## Anadir elementos
 ```python
-shopping.append('Atún')     # añade al final de la lista
-```
-
-```python
-shopping.insert(1, 'Jamón') # inserta 'Jamón' en el índice 1
+shopping.append('Atun')      # anade al final
+shopping.insert(1, 'Jamon')  # mete en una posicion concreta
 ```
 
 ---
 
 ## Repetir listas
 ```python
-shopping * 3
-# repite los elementos 3 veces
+shopping * 3   # repite la lista 3 veces
 ```
 
 ---
 
 ## Combinar listas
 ```python
-shopping + fruitshop
-# une dos listas y devuelve una nueva
+shopping + fruitshop   # une dos listas y crea una nueva
 ```
 
 ```python
 shopping.append(fruitshop)
-# añade la lista entera como un solo elemento (sublista)
+# mete la lista entera como un solo elemento (ojo)
 ```
 
 ---
 
 ## Modificar elementos
 ```python
-shopping[0] = 'Jugo'
-# reemplaza 'Agua' por 'Jugo'
+shopping[0] = 'Jugo'   # cambia el primer elemento
 ```
 
 ---
 
 ## Modificar por trozos
 ```python
-shopping[1:4] = ['Atún', 'Pasta']
-# reemplaza varios elementos de golpe
+shopping[1:4] = ['Atun', 'Pasta']
+# cambia varios valores de golpe
 ```
 
 ---
 
 ## Borrar elementos
 ```python
-del shopping[2]
-# borra el elemento del índice 2
-```
-
-```python
-shopping.clear()
-# vacía completamente la lista
+del shopping[2]    # borra el elemento del indice 2
+shopping.clear()   # vacia toda la lista
 ```
 
 ---
@@ -123,59 +112,43 @@ shopping.clear()
 ## Buscar elementos
 ```python
 shopping.index('Aceite')
-# devuelve el índice donde está 'Aceite'
+# devuelve el indice donde esta
 ```
 
 ---
 
-## Comprobar pertenencia
+## Comprobar si existe
 ```python
-'Aceite' in shopping    # True
-'Pollo' in shopping     # False
+'Aceite' in shopping   # True
+'Pollo' in shopping    # False
 ```
 
 ---
 
 ## Longitud y conteo
 ```python
-len(shopping)
-# número total de elementos
-```
-
-```python
-shopping.count('Agua')
-# cuántas veces aparece 'Agua'
+len(shopping)              # numero de elementos
+shopping.count('Agua')     # cuantas veces aparece
 ```
 
 ---
 
 ## Strings y listas
 ```python
-text.split()
-# divide el string por espacios
+text.split()        # separa por espacios
+text.split(',')     # separa por comas
 ```
 
 ```python
-text.split(',')
-# divide usando la coma como separador
-```
-
-```python
-','.join(shopping)
-# une la lista en un string separado por comas
+','.join(shopping)  # une la lista en un string
 ```
 
 ---
 
 ## Ordenar listas
 ```python
-sorted(shopping)
-# devuelve la lista ordenada alfabéticamente
-```
-
-```python
-sorted(shopping, reverse=True)
-# orden inverso
+sorted(shopping)                 # orden normal
+sorted(shopping, reverse=True)   # orden inverso
 ```
 
 ---
@@ -184,13 +157,13 @@ sorted(shopping, reverse=True)
 ```python
 for item in shopping:
     print(item)
-# recorre y muestra cada elemento
+# recorre uno a uno
 ```
 
 ```python
 for i, item in enumerate(shopping):
     print(i, item)
-# muestra índice y valor
+# muestra indice y valor
 ```
 
 ---
@@ -207,7 +180,7 @@ for a, b in zip(lista1, lista2):
 ## Comparar listas
 ```python
 [1, 2, 3] < [1, 2, 4]
-# True, porque 3 < 4
+# True porque 3 es menor que 4
 ```
 
 ---
@@ -215,12 +188,12 @@ for a, b in zip(lista1, lista2):
 ## Copias de listas
 ```python
 b = a
-# NO copia, ambas variables apuntan a la misma lista
+# no copia, apuntan a la misma lista
 ```
 
 ```python
 b = a.copy()
-# copia real de la lista
+# copia real
 ```
 
 ---
@@ -238,15 +211,15 @@ any([])   # False
 
 ---
 
-## Listas por comprensión
+## Listas por comprension
 ```python
 [int(x) for x in values.split(',')]
-# convierte todos los valores a int
+# convierte todo a int
 ```
 
 ```python
 [x for x in nums if x > 10]
-# solo incluye valores mayores que 10
+# solo coge los mayores de 10
 ```
 
 ---
@@ -256,21 +229,21 @@ any([])   # False
 import sys
 
 sys.argv
-# lista con los argumentos del programa
+# argumentos del programa
 ```
 
 ```python
 sys.argv[1:]
-# argumentos sin el nombre del script
+# sin el nombre del script
 ```
 
 ---
 
-## Funciones matemáticas
+## Funciones matematicas
 ```python
-sum(lista)   # suma de los elementos
-max(lista)   # valor máximo
-min(lista)   # valor mínimo
+sum(lista)   # suma
+max(lista)   # maximo
+min(lista)   # minimo
 ```
 
 ---
@@ -280,5 +253,5 @@ min(lista)   # valor mínimo
 team = [goalkeeper, defenders, midfielders]
 
 team[1][0]
-# accede al primer elemento de la segunda sublista
+# accede a una sublista
 ```
