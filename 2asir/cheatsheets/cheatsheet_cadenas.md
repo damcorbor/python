@@ -1,154 +1,380 @@
-# 🐍 Chuleta de Cadenas de Texto en Python
+# Chuleta – Cadenas de texto en Python (strings)
 
-## 🔤 Concepto básico
-Cadenas (strings) = secuencias de caracteres Unicode (incluye emojis 😎).
-Ejemplos: 'Hola', "Mundo"
+## Qué es un string
+- Secuencia de caracteres
+- Ordenada
+- Inmutable (no se puede modificar directamente)
+- Usa Unicode (Python 3)
 
-## 🧱 Crear strings
-
-Simples: 'texto'
-
-Dobles: "texto"
-
-Triples (multilínea / docstrings): """texto""" (PEP 257 recomienda dobles triples)
-
-## 🚫 Cadena vacía
-''
-
-## 🔄 Conversión de tipos
-str(10) → '10' · int('10') → 10 · float('3.14') → 3.14
-
-## 🧩 Secuencias de escape
-| Secuencia | Significado |
-|---|---|
-| \n | salto de línea |
-| \t | tabulación |
-| \' | comilla simple |
-| \\ | barra invertida |
-
-## 🧱 Raw strings
-r'a\tb\tc' → muestra literalmente a\tb\tc
-
-## 🖨️ print()
-print(a, b, sep='|', end='!!')
-
-## ⌨️ Entrada por teclado
-name = input('Tu nombre: ')
-⚠️ No llames input a una variable.
-
-## ➕ Operaciones
-
-Concatenar: 'Hola ' + 'Mundo'
-
-Repetir: 'Hi! ' * 3 → Hi! Hi! Hi!
-
-## 🔢 Índices y rebanadas (slicing)
-'Python'[0] → 'P' · 'Python'[-1] → 'n' · 'Python'[0:3] → 'Pyt'
-(fin exclusivo: llega hasta end - 1)
-
-## 📏 Longitud
-len('Hola') → 4
-
-## 🔍 Búsqueda
-
-Contiene: 'sol' in 'girasol' → True
-
-Inicio/fin: texto.startswith('Hola'), texto.endswith('fin')
-
-Primera ocurrencia: texto.find('a') / texto.index('a')
-
-Contar: texto.count('a')
-
-## 🧼 Limpiar texto
-strip() (espacios / \n / \t), lstrip(), rstrip()
-' x \n'.strip() → 'x' · s.strip(chars) para caracteres concretos
-
-## 🔁 Reemplazar
-'Quien mal anda'.replace('mal', 'bien')
-
-## 🔠 Mayúsculas / minúsculas
-capitalize() · title() · upper() · lower() · swapcase()
-
-## 🔎 Identificación de caracteres
-isalpha() · isdigit() · isalnum() · isupper() · islower() · isnumeric()
-
-## 🧮 Interpolación (f-strings)
-f'Me llamo {name} y tengo {age} años'
-Formateo: f'{pi:.2f}' · f'{n:05d}' · f'{valor:x}' (hex)
-Debug: f'{var=}' → var=...
-
-## 🚀 Unicode
-'\N{ROCKET}' → 🚀 · ord('A') → 65 · chr(65) → 'A'
-
-## 🔡 Comparación
-Lexicográfica: 'a' < 'b', 'A' < 'a' (mayúsculas antes en Unicode)
-
-## ✅ Resumen rápido
-
-Concatenar: 'a' + 'b'
-
-Repetir: 'a' * 3
-
-Longitud: len(s)
-
-Buscar: 'x' in s
-
-Limpiar: s.strip()
-
-Caso: s.upper(), s.lower()
-
-f-strings: f'{var}'
-
-> Nota: los strings son inmutables (se crean nuevos al modificar).
-
-# ejercicios
+```python
+text = 'Hola'
+name = "Python"
+empty = ''
 ```
-Password con patrón simple (string, random)
-import string
-import random
 
-letras = string.ascii_letters
-digitos = string.digits
-simbolos = "!#$%&*"
+---
 
-a = random.choice(letras)
-b = random.choice(letras)
-c = random.choice(letras)
-d = random.choice(letras)
+## Crear strings
 
-e = random.choice(digitos)
-f = random.choice(digitos)
-g = random.choice(digitos)
-h = random.choice(digitos)
+```python
+s1 = 'texto con comillas simples'
+s2 = "texto con comillas dobles"
+```
 
-i = random.choice(simbolos)
-j = random.choice(simbolos)
+### Comillas dentro de strings
 
-password = a + b + c + d + e + f + g + h + i + j
-print("Password generada: ", password)
+```python
+'Los "strings" son texto'
+"Los 'strings' son texto"
 ```
-```
-print("¿Todos los caracteres son numéricos?", numero.isnumeric())
-```
-```
-print("¿Son iguales?", palabra1 == palabra2)
-print(f"¿Es la palabra {palabra1} mayor que la palabra {palabra2}?", palabra1 > palabra2)
-```
-```
-print("Frase en orden inverso:", frase[::-1])
-```
-```
-cadena = ' 192.168.001.010 '.strip()
 
-primer = cadena.find(".")
-octeto1fin = cadena[primer+1:]
-octeto1 = cadena[:primer]
+---
 
-segundo = octeto1fin.find(".")
-octeto2fin = octeto1fin[segundo+1:]
-octeto2 = octeto1fin[:segundo]
+## Strings multilínea (triples)
 
-tercero = octeto2fin.find(".")
-octeto3fin = octeto2fin[tercero+1:]
-octeto3 = octeto2fin[:tercero]
+```python
+poem = """To be, or not to be
+that is the question"""
 ```
+
+- Se usan sobre todo para textos largos y docstrings
+- Por convención: triples comillas dobles
+
+---
+
+## Conversión de tipos
+
+```python
+str(10)        # '10'
+str(True)      # 'True'
+str(3.14)      # '3.14'
+```
+
+```python
+int('10')      # 10
+float('3.14')  # 3.14
+```
+
+```python
+int('FF', 16)  # 255 (hexadecimal)
+```
+
+---
+
+## Secuencias de escape
+
+```python
+'\n'  # salto de línea
+'\t'  # tabulación
+'\''  # comilla simple
+'\\'  # barra invertida
+```
+
+```python
+msg = 'Linea 1\nLinea 2'
+print(msg)
+```
+
+---
+
+## Raw strings (texto en crudo)
+
+```python
+text = r'abc\ndef'
+print(text)
+```
+
+- No interpreta \n, \t, etc.
+- Muy usado en rutas y expresiones regulares
+
+---
+
+## print() avanzado
+
+```python
+print(a, b)                 # espacio por defecto
+print(a, b, sep='|')        # separador personalizado
+print(a, end='!!')          # sin salto de línea
+```
+
+---
+
+## Leer datos del teclado
+
+```python
+name = input('Nombre: ')
+age = input('Edad: ')
+```
+
+- input() siempre devuelve string
+- No llames `input` a una variable
+
+---
+
+## Operaciones con strings
+
+### Concatenar
+
+```python
+'Hola ' + 'Mundo'
+```
+
+### Repetir
+
+```python
+'Hi! ' * 3
+```
+
+---
+
+## Índices
+
+```python
+word = 'Python'
+
+word[0]   # 'P'
+word[1]   # 'y'
+word[-1]  # 'n'
+```
+
+```python
+word[0] = 'J'  # error (inmutable)
+```
+
+---
+
+## Trocear strings (slicing)
+
+```python
+word = 'Python'
+
+word[0:3]   # 'Pyt'
+word[:4]    # 'Pyth'
+word[2:]    # 'thon'
+word[::-1]  # 'nohtyP'
+```
+
+- El final no se incluye
+
+---
+
+## Longitud
+
+```python
+len('Hola')   # 4
+len('')       # 0
+```
+
+---
+
+## Comprobar pertenencia
+
+```python
+'sol' in 'girasol'      # True
+'luna' in 'girasol'     # False
+```
+
+```python
+'C' not in 'ATGAA'
+```
+
+---
+
+## Limpiar strings
+
+```python
+text = '  hola \n'
+text.strip()
+```
+
+```python
+text.lstrip()
+text.rstrip()
+```
+
+```python
+text.strip('\n ')
+```
+
+---
+
+## Buscar texto
+
+```python
+text = 'Hola mundo hola'
+```
+
+```python
+text.find('hola')
+text.index('hola')
+```
+
+```python
+text.startswith('Hola')
+text.endswith('hola')
+```
+
+```python
+text.find('hola', 5)
+text.find('hola', 5, 15)
+```
+
+---
+
+## Buscar desde la derecha
+
+```python
+text.rfind('hola')
+text.rindex('hola')
+```
+
+---
+
+## Contar ocurrencias
+
+```python
+text.count('hola')
+```
+
+---
+
+## Reemplazar texto
+
+```python
+text.replace('hola', 'hey')
+```
+
+```python
+text.replace('hola', 'hey', 1)
+```
+
+---
+
+## Mayúsculas y minúsculas
+
+```python
+s.capitalize()
+s.title()
+s.upper()
+s.lower()
+s.swapcase()
+```
+
+---
+
+## Identificar caracteres
+
+```python
+'R2D2'.isalnum()
+'ABC'.isalpha()
+'123'.isdigit()
+'ABC'.isupper()
+'abc'.islower()
+```
+
+---
+
+## f-strings
+
+```python
+name = 'Leia'
+age = 22
+
+f'Me llamo {name} y tengo {age}'
+```
+
+```python
+f'{age * 2}'
+f'{{ valor = {age} }}'
+```
+
+---
+
+## Formateo con f-strings
+
+```python
+n = 42
+f'{n:5d}'
+f'{n:05d}'
+```
+
+```python
+pi = 3.14159
+f'{pi:.2f}'
+```
+
+```python
+f'{n:x}'
+```
+
+---
+
+## Modo debug (Python 3.8+)
+
+```python
+f'{name=}'
+f'{age=}'
+f'{age * 2=}'
+```
+
+---
+
+## Representación interna (!r)
+
+```python
+name = 'Steven'
+print(f'{name!r}')
+```
+
+---
+
+## Unicode
+
+```python
+ord('A')
+chr(65)
+```
+
+```python
+'\N{ROCKET}'
+```
+
+---
+
+## Comparar strings
+
+```python
+'arca' < 'arpa'
+'a' < 'antes'
+'A' < 'a'
+```
+
+---
+
+## Strings y listas
+
+```python
+text = 'uno,dos,tres'
+text.split(',')
+```
+
+```python
+','.join(['a', 'b', 'c'])
+```
+
+---
+
+## Resumen rápido
+
+```python
+len(s)
+'x' in s
+s.strip()
+s.find('x')
+s.replace(a, b)
+s.upper()
+s.lower()
+s[::-1]
+```
+
+> Los strings son inmutables: cualquier cambio crea un string nuevo
