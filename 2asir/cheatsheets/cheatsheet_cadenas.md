@@ -7,9 +7,9 @@
 - Usa Unicode (Python 3)
 
 ```python
-text = 'Hola'
-name = "Python"
-empty = ''
+text = 'Hola'        # string con texto
+name = "Python"     # string con comillas dobles
+empty = ''          # string vacío
 ```
 
 ---
@@ -24,8 +24,8 @@ s2 = "texto con comillas dobles"
 ### Comillas dentro de strings
 
 ```python
-'Los "strings" son texto'
-"Los 'strings' son texto"
+'Los "strings" son texto'   # comillas dobles dentro
+"Los 'strings' son texto"   # comillas simples dentro
 ```
 
 ---
@@ -37,7 +37,8 @@ poem = """To be, or not to be
 that is the question"""
 ```
 
-- Se usan sobre todo para textos largos y docstrings
+- Se usan para textos largos
+- También para docstrings
 - Por convención: triples comillas dobles
 
 ---
@@ -45,18 +46,18 @@ that is the question"""
 ## Conversión de tipos
 
 ```python
-str(10)        # '10'
-str(True)      # 'True'
-str(3.14)      # '3.14'
+str(10)        # convierte a string → '10'
+str(True)      # convierte a string → 'True'
+str(3.14)      # convierte a string → '3.14'
 ```
 
 ```python
-int('10')      # 10
-float('3.14')  # 3.14
+int('10')      # convierte a entero → 10
+float('3.14')  # convierte a float → 3.14
 ```
 
 ```python
-int('FF', 16)  # 255 (hexadecimal)
+int('FF', 16)  # hexadecimal a decimal → 255
 ```
 
 ---
@@ -72,7 +73,7 @@ int('FF', 16)  # 255 (hexadecimal)
 
 ```python
 msg = 'Linea 1\nLinea 2'
-print(msg)
+print(msg)     # imprime en dos líneas
 ```
 
 ---
@@ -81,18 +82,18 @@ print(msg)
 
 ```python
 text = r'abc\ndef'
-print(text)
+print(text)    # no interpreta \n
 ```
 
-- No interpreta \n, \t, etc.
-- Muy usado en rutas y expresiones regulares
+- No interpreta caracteres especiales
+- Muy usado en rutas y regex
 
 ---
 
 ## print() avanzado
 
 ```python
-print(a, b)                 # espacio por defecto
+print(a, b)                 # separa con espacio
 print(a, b, sep='|')        # separador personalizado
 print(a, end='!!')          # sin salto de línea
 ```
@@ -102,12 +103,12 @@ print(a, end='!!')          # sin salto de línea
 ## Leer datos del teclado
 
 ```python
-name = input('Nombre: ')
+name = input('Nombre: ')    # siempre devuelve string
 age = input('Edad: ')
 ```
 
 - input() siempre devuelve string
-- No llames `input` a una variable
+- No usar input como nombre de variable
 
 ---
 
@@ -116,13 +117,13 @@ age = input('Edad: ')
 ### Concatenar
 
 ```python
-'Hola ' + 'Mundo'
+'Hola ' + 'Mundo'   # une strings
 ```
 
 ### Repetir
 
 ```python
-'Hi! ' * 3
+'Hi! ' * 3          # repite el texto
 ```
 
 ---
@@ -138,7 +139,7 @@ word[-1]  # 'n'
 ```
 
 ```python
-word[0] = 'J'  # error (inmutable)
+word[0] = 'J'  # error → string inmutable
 ```
 
 ---
@@ -154,7 +155,7 @@ word[2:]    # 'thon'
 word[::-1]  # 'nohtyP'
 ```
 
-- El final no se incluye
+- El índice final no se incluye
 
 ---
 
@@ -175,7 +176,7 @@ len('')       # 0
 ```
 
 ```python
-'C' not in 'ATGAA'
+'C' not in 'ATGAA'      # comprueba ausencia
 ```
 
 ---
@@ -184,16 +185,16 @@ len('')       # 0
 
 ```python
 text = '  hola \n'
-text.strip()
+text.strip()            # elimina espacios y saltos
 ```
 
 ```python
-text.lstrip()
-text.rstrip()
+text.lstrip()           # izquierda
+text.rstrip()           # derecha
 ```
 
 ```python
-text.strip('\n ')
+text.strip('\n ')       # elimina caracteres indicados
 ```
 
 ---
@@ -205,13 +206,13 @@ text = 'Hola mundo hola'
 ```
 
 ```python
-text.find('hola')
-text.index('hola')
+text.find('hola')       # índice o -1
+text.index('hola')      # índice o error
 ```
 
 ```python
-text.startswith('Hola')
-text.endswith('hola')
+text.startswith('Hola') # True / False
+text.endswith('hola')   # True / False
 ```
 
 ```python
@@ -224,8 +225,8 @@ text.find('hola', 5, 15)
 ## Buscar desde la derecha
 
 ```python
-text.rfind('hola')
-text.rindex('hola')
+text.rfind('hola')      # busca desde el final
+text.rindex('hola')     # error si no existe
 ```
 
 ---
@@ -233,7 +234,7 @@ text.rindex('hola')
 ## Contar ocurrencias
 
 ```python
-text.count('hola')
+text.count('hola')      # número de veces
 ```
 
 ---
@@ -241,11 +242,11 @@ text.count('hola')
 ## Reemplazar texto
 
 ```python
-text.replace('hola', 'hey')
+text.replace('hola', 'hey')     # reemplaza todas
 ```
 
 ```python
-text.replace('hola', 'hey', 1)
+text.replace('hola', 'hey', 1)  # solo la primera
 ```
 
 ---
@@ -253,11 +254,11 @@ text.replace('hola', 'hey', 1)
 ## Mayúsculas y minúsculas
 
 ```python
-s.capitalize()
-s.title()
-s.upper()
-s.lower()
-s.swapcase()
+s.capitalize()   # primera letra mayúscula
+s.title()        # cada palabra
+s.upper()        # todo mayúsculas
+s.lower()        # todo minúsculas
+s.swapcase()     # intercambia
 ```
 
 ---
@@ -265,11 +266,11 @@ s.swapcase()
 ## Identificar caracteres
 
 ```python
-'R2D2'.isalnum()
-'ABC'.isalpha()
-'123'.isdigit()
-'ABC'.isupper()
-'abc'.islower()
+'R2D2'.isalnum()   # letras y números → True
+'ABC'.isalpha()   # solo letras
+'123'.isdigit()   # solo números
+'ABC'.isupper()   # mayúsculas
+'abc'.islower()   # minúsculas
 ```
 
 ---
@@ -284,8 +285,8 @@ f'Me llamo {name} y tengo {age}'
 ```
 
 ```python
-f'{age * 2}'
-f'{{ valor = {age} }}'
+f'{age * 2}'          # evalúa expresión
+f'{{ valor = {age} }}'  # llaves literales
 ```
 
 ---
@@ -294,17 +295,17 @@ f'{{ valor = {age} }}'
 
 ```python
 n = 42
-f'{n:5d}'
-f'{n:05d}'
+f'{n:5d}'     # ancho 5
+f'{n:05d}'    # relleno con ceros
 ```
 
 ```python
 pi = 3.14159
-f'{pi:.2f}'
+f'{pi:.2f}'   # dos decimales
 ```
 
 ```python
-f'{n:x}'
+f'{n:x}'      # hexadecimal
 ```
 
 ---
@@ -323,7 +324,7 @@ f'{age * 2=}'
 
 ```python
 name = 'Steven'
-print(f'{name!r}')
+print(f'{name!r}')   # representación real
 ```
 
 ---
@@ -331,12 +332,12 @@ print(f'{name!r}')
 ## Unicode
 
 ```python
-ord('A')
-chr(65)
+ord('A')    # 65
+chr(65)     # 'A'
 ```
 
 ```python
-'\N{ROCKET}'
+'\N{ROCKET}'  # 🚀
 ```
 
 ---
@@ -355,11 +356,11 @@ chr(65)
 
 ```python
 text = 'uno,dos,tres'
-text.split(',')
+text.split(',')   # divide en lista
 ```
 
 ```python
-','.join(['a', 'b', 'c'])
+','.join(['a', 'b', 'c'])  # une lista
 ```
 
 ---
